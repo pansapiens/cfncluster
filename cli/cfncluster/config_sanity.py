@@ -74,7 +74,8 @@ def check_resource(region, aws_access_key_id, aws_secret_access_key, resource_ty
             print('Config sanity error: %s' % e.message)
             sys.exit(1)
     # EC2 Placement Group
-    elif resource_type == 'EC2PlacementGroup':
+    elif resource_type == 'EC2PlacementGroup' \
+            and resource_value.upper() != 'DYNAMIC':
         try:
             ec2_conn = boto.ec2.connect_to_region(region,aws_access_key_id=aws_access_key_id,
                                                  aws_secret_access_key=aws_secret_access_key)
